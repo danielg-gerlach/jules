@@ -1,43 +1,145 @@
-# Jules: AI Coding Agent
+# TkTask - Simple Task Management Application
 
-## Introduction
+TkTask is a desktop application built with Python and Tkinter that helps you manage your daily tasks efficiently. It provides a user-friendly interface to add, edit, delete, and track tasks, with features like prioritization, due dates, and completion status. Task data is stored locally in a JSON file. The application also offers basic data visualization for task statistics.
 
-Jules is an AI coding agent from Google DeepMind. Its purpose is to assist with software development tasks, streamlining workflows and improving efficiency.
+## Screenshots
 
-## Capabilities
+*(Note: Actual screenshots would be inserted here in a real project.)*
 
-Jules possesses a wide range of abilities, including:
+1.  **Main Application Window:** Shows the primary interface with the task list (displaying title, priority, due date, status), control buttons (Add, Edit, Delete, Toggle Complete, View Statistics), and filter options (by priority and status).
+2.  **Add/Edit Task Dialog:** A modal window with fields for entering or modifying task details: Title, Description, Priority (combobox), and Due Date. The "Completed" checkbox is visible in edit mode.
+3.  **Task Statistics Window:** A modal window displaying task analytics:
+    *   Summary counts (Total, Completed, Pending tasks).
+    *   A bar chart showing the distribution of tasks by priority (Low, Medium, High).
+    *   A pie chart illustrating the proportion of completed versus pending tasks.
 
-*   **Understanding and analyzing issue statements:** Jules can comprehend and break down complex software development issues.
-*   **Exploring and understanding codebases:** Jules can navigate and analyze existing code to understand its structure and functionality.
-*   **Creating execution plans:** Jules can formulate step-by-step plans to address identified issues.
-*   **Editing code based on the plan:** Jules can modify code according to the established plan.
-*   **Adding unit tests:** Jules can generate unit tests to ensure code quality and correctness.
-*   **Interacting with users for feedback and approval:** Jules can communicate with users to gather feedback and obtain approval for its actions.
-*   **Using tools:** Jules is proficient in using a variety of tools to aid in its tasks, including:
-    *   `ls`: List files and directories.
-    *   `read_files`: Read the content of files.
-    *   `view_text_website`: Fetch content from websites.
-    *   `set_plan`: Define an execution plan.
-    *   `plan_step_complete`: Mark a step in the plan as complete.
-    *   `run_subtask`: Execute a subtask.
-    *   `cancel_subtask`: Cancel an ongoing subtask.
-    *   `message_user`: Send messages to the user.
-    *   `request_user_input`: Request input from the user.
-    *   `record_user_approval_for_plan`: Record user approval for a plan.
-    *   `submit`: Submit completed work.
-*   **Delegating tasks to Worker agents:** Jules can delegate specific tasks to specialized Worker agents.
+## Features
 
-## How it Works
+*   **User-Friendly GUI:** Simple and intuitive interface built with Tkinter.
+*   **Task Management:** Add new tasks, edit existing task details, and delete tasks.
+*   **Task Prioritization:** Assign "High", "Medium", or "Low" priority to tasks.
+*   **Due Dates:** Assign due dates to tasks (format: YYYY-MM-DD).
+*   **Completion Tracking:** Mark tasks as "Completed" or "Pending".
+*   **Data Persistence:** Tasks are saved locally in a `tasks.json` file, so your data persists between sessions.
+*   **Filtering:** Filter the task list by priority level or completion status ("All", "Pending", "Completed").
+*   **Data Visualization:** View statistics about your tasks, including:
+    *   Counts of total, completed, and pending tasks.
+    *   A bar chart showing the distribution of tasks by priority.
+    *   A pie chart showing the ratio of completed to pending tasks.
+    *   (Powered by Matplotlib)
+*   **Error Handling:** User-friendly error messages for invalid inputs or issues.
+*   **Cross-Platform:** Being a Python and Tkinter application, it should run on Windows, macOS, and Linux (provided Python and Tkinter are installed).
 
-Jules follows a general workflow to address software development tasks:
+## Installation Instructions
 
-1.  **Issue Intake:** Jules receives an issue statement or task.
-2.  **Planning:** Jules analyzes the issue, explores the codebase if necessary, and creates a detailed execution plan.
-3.  **Execution:** Jules executes the plan, editing code, adding tests, and utilizing tools as needed.
-4.  **User Interaction:** Jules interacts with the user throughout the process, providing updates, requesting feedback, and seeking approval for its plan and actions.
-5.  **Submission:** Once the task is completed and approved, Jules submits the work.
+### Prerequisites
 
-## Purpose of this Repository
+*   **Python 3.7+:** Ensure you have Python 3.7 or a newer version installed. Tkinter is usually included with standard Python installations. You can download Python from [python.org](https://www.python.org/).
+*   **`matplotlib`:** This package is required for displaying task statistics charts.
 
-This repository serves as a demonstration of Jules' capabilities. It showcases how Jules can be used to manage and execute software development tasks in a real-world scenario.
+### Setting up a Virtual Environment (Recommended)
+
+It's good practice to use a virtual environment to manage project dependencies.
+
+1.  Open your terminal or command prompt.
+2.  Navigate to the project directory where you've cloned or downloaded TkTask.
+3.  Create a virtual environment:
+    ```bash
+    python -m venv venv
+    ```
+4.  Activate the virtual environment:
+    *   **On Windows:**
+        ```bash
+        venv\Scripts\activate
+        ```
+    *   **On macOS/Linux:**
+        ```bash
+        source venv/bin/activate
+        ```
+    Your terminal prompt should change to indicate that the virtual environment is active (e.g., `(venv) ...`).
+
+### Installing Dependencies
+
+With your virtual environment activated, install the required package:
+
+```bash
+pip install matplotlib
+```
+
+## Usage Instructions
+
+1.  Ensure you have completed the installation steps (Python, virtual environment, and dependencies).
+2.  Navigate to the project's root directory in your terminal (if you're not already there).
+3.  Make sure your virtual environment is activated.
+4.  Run the application:
+    ```bash
+    python main.py
+    ```
+    The main application window should appear.
+
+### Using the GUI:
+
+*   **Adding a Task:** Click the "Add Task" button. Fill in the details in the dialog that appears and click "Save".
+*   **Viewing Tasks:** Tasks are displayed in the main list. You can see their title, priority, due date, and status.
+*   **Selecting a Task:** Click on a task in the list to select it.
+*   **Editing a Task:** Select a task and click "Edit Selected", or double-click a task. Modify the details in the dialog and click "Save".
+*   **Deleting a Task:** Select a task and click "Delete Selected". Confirm the deletion when prompted.
+*   **Toggling Completion:** Select a task and click "Toggle Complete" to switch its status between "Pending" and "Completed".
+*   **Filtering Tasks:**
+    *   Use the "Priority" combobox to show tasks of a specific priority or "All" tasks.
+    *   Use the "Status" combobox to show "Pending", "Completed", or "All" tasks.
+*   **Viewing Statistics:** Click the "View Statistics" button to open a window with charts showing task distribution by priority and completion status, along with summary counts.
+
+## Code Structure
+
+The project is organized into the following key files:
+
+*   `main.py`: The main entry point for the application. It initializes the `TaskManager` and the `MainApplication` GUI, and starts the Tkinter event loop.
+*   `task_manager.py`: Contains the backend logic.
+    *   `Task` class: Represents a single task with attributes like ID, title, description, priority, due date, and completion status.
+    *   `TaskManager` class: Manages the collection of tasks, including adding, editing, deleting, loading from, and saving to the `tasks.json` file.
+*   `gui.py`: Defines the Tkinter-based graphical user interface.
+    *   `MainApplication` class: The main window of the application, displaying the task list, control buttons, and filters.
+    *   `TaskDialog` class: A Toplevel window for adding new tasks or editing existing ones.
+    *   `StatsWindow` class: A Toplevel window for displaying task statistics using Matplotlib charts.
+*   `tasks.json`: The default JSON file where task data is stored. This file is automatically created in the same directory as `main.py` if it doesn't exist.
+
+## Future Improvements
+
+This application provides a solid foundation for task management. Potential future enhancements include:
+
+*   **Due Date Reminders/Notifications:** Alert users about upcoming or overdue tasks.
+*   **Enhanced Date Picker:** Use a more user-friendly calendar widget for selecting due dates instead of manual entry.
+*   **Advanced Search & Sorting:** Allow searching tasks by keywords and more complex sorting options (e.g., sort by title).
+*   **Customizable Themes:** Allow users to change the look and feel of the application.
+*   **Export/Import Tasks:** Support exporting tasks to formats like CSV or iCalendar, and importing from them.
+*   **Undo/Redo Functionality:** Allow users to revert actions like task deletion or modification.
+*   **Sub-tasks:** Ability to create sub-tasks under a parent task.
+*   **Recurring Tasks:** Option to define tasks that repeat on a schedule.
+*   **User Accounts/Cloud Sync (Major):** For multi-user support or syncing across devices.
+
+## License
+
+This project is licensed under the MIT License.
+
+MIT License
+
+Copyright (c) 2024 The TkTask Project Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
